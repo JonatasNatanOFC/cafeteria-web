@@ -8,6 +8,7 @@ const CardapioYupFormik = () => {
   const schema = Yup.object().shape({
     titulo: Yup.string().trim().min(1).max(10).required(),
     descricao: Yup.string().trim().min(1).max(20).required(),
+    valor: Yup.number().required().positive(),
   });
 
   let [produtos, setProdutos] = useState([]);
@@ -31,7 +32,10 @@ const CardapioYupFormik = () => {
           setProdutos([...data]);
         });
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.error('Erro ao carregar produtos:', error);
+      });
+
   }, []);
 
   useEffect(() => {
@@ -59,8 +63,9 @@ const CardapioYupFormik = () => {
         setShow(false);
       })
       .catch((error) => {
-        console.log('Problemas a vista!');
+        console.error('Erro ao cadastrar produto:', error);
       });
+
   };
 
   const formik = useFormik({
