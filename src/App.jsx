@@ -7,6 +7,7 @@ import Home from './views/Home';
 import NoPage from './views/NoPage';
 import Login from './views/Login';
 import CardapioYupFormik from './views/CardapioYupFormik';
+import ClienteYupFormik from './views/ClienteYupFormik';
 
 const Router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const Router = createBrowserRouter([
       {
         path: "cardapio",
         element: <CardapioYupFormik />,
+      },
+      {
+        path: "clientes",
+        element: <ClienteYupFormik />,
       },
       {
         path: "login",
